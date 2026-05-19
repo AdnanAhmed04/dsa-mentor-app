@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { NavigationContainer, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { LayoutDashboard, BookOpen, User, ShieldCheck, Activity } from 'lucide-react-native';
+import { LayoutDashboard, BookOpen, User, ShieldCheck, ClipboardList } from 'lucide-react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 // State
@@ -162,6 +162,21 @@ const MainTabs = () => {
           headerShown: false,
         }}
       />
+      {user?.role !== 'admin' && (
+        <Tab.Screen
+          name="Tests"
+          component={TestScreen}
+          options={{
+            tabBarLabel: 'Tests',
+            tabBarIcon: ({ color, focused }) => (
+              <View style={focused ? [styles.activeTabIcon, { backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.22)' : 'rgba(79, 70, 229, 0.15)' }] : null}>
+                <ClipboardList color={color} size={22} />
+              </View>
+            ),
+            headerShown: false,
+          }}
+        />
+      )}
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
@@ -175,21 +190,6 @@ const MainTabs = () => {
           headerShown: false,
         }}
       />
-      {user?.role !== 'admin' && (
-        <Tab.Screen
-          name="Tests"
-          component={TestScreen}
-          options={{
-            tabBarLabel: 'Tests',
-            tabBarIcon: ({ color, focused }) => (
-              <View style={focused ? [styles.activeTabIcon, { backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.22)' : 'rgba(79, 70, 229, 0.15)' }] : null}>
-                <Activity color={color} size={22} />
-              </View>
-            ),
-            headerShown: false,
-          }}
-        />
-      )}
       {user?.role === 'admin' && (
         <Tab.Screen
           name="Admin"

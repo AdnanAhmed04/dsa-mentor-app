@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "DSA Mentor",
+    "slug": "dsa-mentor",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "icon": "./app_icon.png",
+    "splash": {
+      "image": "./app_icon.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#0f172a"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./app_icon.png"
+      },
+      "permissions": [
+        "NOTIFICATIONS",
+        "RECEIVE_BOOT_COMPLETED",
+        "VIBRATE"
+      ],
+      "package": "com.bilal.ahmedtailorflow.dsamentor"
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./app_icon.png",
+          "color": "#6366f1",
+          "defaultChannel": "default",
+          "enableBackgroundRemoteNotifications": false
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "41cf30b5-464b-400d-9a2a-d0edc6c6d490"
+      }
+    },
+    "owner": "bilal.ahmedtailorflow"
+  }
+}

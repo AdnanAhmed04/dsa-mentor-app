@@ -6,7 +6,7 @@ import { NavigationContainer, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { LayoutDashboard, BookOpen, User, ShieldCheck } from 'lucide-react-native';
-import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 // State
 import useAuthStore from '../store/useAuthStore';
@@ -213,68 +213,66 @@ const AppNavigator = () => {
   };
 
   return (
-    <SafeAreaProvider>
-      <NavigationContainer theme={customTheme}>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-            animation: 'slide_from_right'
-          }}
-        >
-          {token ? (
-            <>
-              <Stack.Screen name="Main" component={MainTabs} />
-              <Stack.Screen
-                name="TopicDetail"
-                component={TopicDetailScreen}
-                options={{
-                  headerShown: true,
-                  headerTitle: '',
-                  headerTransparent: true,
-                  headerTintColor: theme.colors.textPrimary,
-                  headerBackTitleVisible: false,
-                }}
-              />
-              <Stack.Screen
-                name="Quiz"
-                component={QuizScreen}
-                options={{
-                  headerShown: true,
-                  headerTitle: '',
-                  headerTransparent: true,
-                  headerTintColor: theme.colors.textPrimary,
-                  headerBackTitleVisible: false,
-                }}
-              />
-              <Stack.Screen
-                name="MockTest"
-                component={MockTestScreen}
-                options={{
-                  headerShown: true,
-                  headerTitle: '',
-                  headerTransparent: true,
-                  headerTintColor: theme.colors.textPrimary,
-                  headerBackTitleVisible: false,
-                }}
-              />
-              <Stack.Screen
-                name="QuizTopicsList"
-                component={QuizTopicsListScreen}
-                options={{
-                  headerShown: false,
-                  animation: 'slide_from_bottom'
-                }}
-              />
-            </>
-          ) : (
-            <>
-              <Stack.Screen name="Login" component={LoginScreen} />
-              <Stack.Screen name="Signup" component={SignupScreen} />
-            </>
-          )}
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <NavigationContainer theme={customTheme}>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+          animation: 'slide_from_right'
+        }}
+      >
+        {token ? (
+          <>
+            <Stack.Screen name="Main" component={MainTabs} />
+            <Stack.Screen
+              name="TopicDetail"
+              component={TopicDetailScreen}
+              options={{
+                headerShown: true,
+                headerTitle: '',
+                headerTransparent: true,
+                headerTintColor: theme.colors.textPrimary,
+                headerBackTitleVisible: false,
+              }}
+            />
+            <Stack.Screen
+              name="Quiz"
+              component={QuizScreen}
+              options={{
+                headerShown: true,
+                headerTitle: '',
+                headerTransparent: true,
+                headerTintColor: theme.colors.textPrimary,
+                headerBackTitleVisible: false,
+              }}
+            />
+            <Stack.Screen
+              name="MockTest"
+              component={MockTestScreen}
+              options={{
+                headerShown: true,
+                headerTitle: '',
+                headerTransparent: true,
+                headerTintColor: theme.colors.textPrimary,
+                headerBackTitleVisible: false,
+              }}
+            />
+            <Stack.Screen
+              name="QuizTopicsList"
+              component={QuizTopicsListScreen}
+              options={{
+                headerShown: false,
+                animation: 'slide_from_bottom'
+              }}
+            />
+          </>
+        ) : (
+          <>
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Signup" component={SignupScreen} />
+          </>
+        )}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
